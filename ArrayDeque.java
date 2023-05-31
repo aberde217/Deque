@@ -1,3 +1,4 @@
+import java.util.Iterator;
 public class ArrayDeque <Type> implements Iterable<Type>{
     private int size;
     private Type[] arr;
