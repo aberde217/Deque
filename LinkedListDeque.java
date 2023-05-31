@@ -114,6 +114,21 @@ public class LinkedListDeque <Type> implements Iterable<Type>{
     public Iterator<Type> iterator() {
         return new LinkedListIterator();
     }
+    
+    public boolean equals(Object o) {
+        if (this == o)
+            return true;
+        if (!(o instanceof LinkedListDeque<?>))
+            return false;
+        else if (o == null)
+            return false;
+        LinkedListDeque L = (LinkedListDeque) o;
+        for(int i = 0; i < size; i++) {
+            if(!(L.get(i).equals(get(i))))
+                return false;
+        }
+        return true;
+    }
 
 
     private class LinkedListIterator implements Iterator<Type> {
