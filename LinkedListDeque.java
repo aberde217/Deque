@@ -1,4 +1,5 @@
-public class LinkedListDeque <Type> {
+import java.util.Iterator;
+public class LinkedListDeque <Type> implements Iterable<Type>{
 
     private class TypeNode {
         private Type item;
@@ -63,6 +64,10 @@ public class LinkedListDeque <Type> {
             System.out.println(L.item);
             L = L.next;
         }
+
+        for (Type i: this) {
+
+        }
     }
 
     public Type removeFirst() {
@@ -105,4 +110,25 @@ public class LinkedListDeque <Type> {
     public Type getRecursive(int index) {
         return getRecursive(sentinel.next, index, 0);
     }
-}
+
+    public Iterator<Type> iterator() {
+        return new LinkedListIterator();
+    }
+
+
+    private class LinkedListIterator implements Iterator<Type> {
+        private int pos;
+        private LinkedListIterator() {
+            pos = 0;
+        }
+        @Override
+        public boolean hasNext() {
+            return pos < size;
+        }
+        public Type next() {
+            Type prev = get(pos);
+            pos += 1;
+            return prev;
+        }
+
+    }
