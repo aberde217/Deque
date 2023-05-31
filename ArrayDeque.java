@@ -111,6 +111,21 @@ public class ArrayDeque <Type> implements Iterable<Type>{
         return new ArrayDequeIterator();
     }
     
+        public boolean equals(Object o){
+        if (this == o)
+            return true;
+        if (!(o instanceof ArrayDeque<?>))
+            return false;
+        else if (o == null)
+            return false;
+        ArrayDeque arr = (ArrayDeque) o;
+        for(int i = 0; i < size; i++) {
+            if(!(arr.get(i).equals(get(i))))
+                return false;
+        }
+        return true;
+    }
+    
     private class ArrayDequeIterator implements Iterator<Type> {
         int pos;
         private ArrayDequeIterator() {
