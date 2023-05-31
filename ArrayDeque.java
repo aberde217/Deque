@@ -1,4 +1,4 @@
-public class ArrayDeque <Type> {
+public class ArrayDeque <Type> implements Iterable<Type>{
     private int size;
     private Type[] arr;
     private int nextFirst;
@@ -105,5 +105,30 @@ public class ArrayDeque <Type> {
     public Type get(int index) {
         return arr[index];
     }
+    
+    public Iterator<Type> iterator() {
+        return new ArrayDequeIterator();
+    }
+    
+    private class ArrayDequeIterator implements Iterator<Type> {
+        int pos;
+        private ArrayDequeIterator() {
+            pos = 0;
+        }
+
+        @Override
+        public boolean hasNext() {
+            return pos < size;
+        }
+
+        public Type next() {
+            Type prev = arr[pos];
+            pos += 1;
+            return prev;
+        }
+    }
+
+    
+    
     
 }
